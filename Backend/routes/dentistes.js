@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 router.get('/', getDentistes);
-router.post('/', createDentiste);
+router.post('/add', createDentiste);
 router.get('/:id', getDentiste);
 router.patch('/:id', updateDentiste);
 router.delete('/:id', deleteDentiste);
