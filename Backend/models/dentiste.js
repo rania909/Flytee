@@ -6,6 +6,7 @@ const dentisteSchema = mongoose.Schema({
     adresse: { type: String, required:  true },
     specialite: { type: String, required:  true },
     description: { type: String, required:  true },
+   
     
 });
 

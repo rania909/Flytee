@@ -5,6 +5,8 @@
 const dentistesRoutes=require('./routes/dentistes.js')
 const utilisateursRoutes = require('./routes/utilisateur.js')
 const rendezvousRoutes = require('./routes/rendezvous.js');
+const agencevoyageRoutes = require('./routes/agencevoyage.js');
+const agencetransportRoutes = require('./routes/agencetransport.js');
 
  const app = express();
 
@@ -18,6 +20,9 @@ const rendezvousRoutes = require('./routes/rendezvous.js');
   app.use('/dentistes',dentistesRoutes);
   app.use('/register',utilisateursRoutes);
   app.use('/rendezvous',rendezvousRoutes);
+  app.use('/agencevoyage',agencevoyageRoutes);
+  app.use('/agencetransport',agencetransportRoutes);
+
 
 
   

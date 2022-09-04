@@ -3,6 +3,19 @@ const mongoose =require("mongoose");
 const dentistes = require( '../models/dentiste.js');
 
 
+const createDentiste = async (req, res) => {
+  const { nom_dentiste, adresse  , specialite , description } = req.body;
+
+  const newdentiste = new dentistes({ nom_dentiste, adresse , specialite , description  })
+
+  try {
+      await newdentiste.save();
+
+      res.status(201).json(newdentiste );
+  } catch (error) {
+      res.status(409).json({ message: error.message });
+  }
+}
 
  const getDentistes = async (req, res) => { 
     try {
@@ -26,27 +39,15 @@ const dentistes = require( '../models/dentiste.js');
     }
 }
 
- const createDentiste = async (req, res) => {
-    const { nom_dentiste, adresse  , specialite , description } = req.body;
- 
-    const newdentiste = new dentistes({ nom_dentiste, adresse , specialite , description  })
 
-    try {
-        await newdentiste.save();
-
-        res.status(201).json(newdentiste );
-    } catch (error) {
-        res.status(409).json({ message: error.message });
-    }
-}
 
  const updateDentiste = async (req, res) => {
     const { id } = req.params;
-    const { nom_dentiste, adresse , specialite , description  } = req.body;
+    const { nom_dentiste, adresse , specialite , description   } = req.body;
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-    const updateDentiste = { nom_dentiste, adresse , specialite , description  , _id: id };
+    const updateDentiste = { nom_dentiste, adresse , specialite , description  ,  _id: id };
 
     await dentistes.findByIdAndUpdate(id, updateDentiste, { new: true });
 
